@@ -8,8 +8,10 @@ gem "jquery-rails"
 gem "sass-rails",   "~> 3.2.3"
 gem "uglifier", ">= 1.0.3"
 
-gem "octokit"
+gem "bootstrap-sass"
 
+gem "octokit"
+gem "omniauth-twitter"
 
 group :production do
   gem "pg"
@@ -17,6 +19,7 @@ end
 
 group :development, :test do
   gem "sqlite3"
+  gem "pry-rails"
 end
 
 group :development do
