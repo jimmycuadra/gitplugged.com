@@ -1,0 +1,27 @@
+<h1>Listing repos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Vote sum</th>
+    <th>Week start</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @repos.each do |repo| %>
+  <tr>
+    <td><%= repo.name %></td>
+    <td><%= repo.vote_sum %></td>
+    <td><%= repo.week_start %></td>
+    <td><%= link_to 'Show', repo %></td>
+    <td><%= link_to 'Edit', edit_repo_path(repo) %></td>
+    <td><%= link_to 'Destroy', repo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Repo', new_repo_path %>

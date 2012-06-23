@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623231555) do
+ActiveRecord::Schema.define(:version => 20120623234113) do
 
   create_table "repos", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20120623231555) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "repos", ["name"], :name => "index_repos_on_name"
+  add_index "repos", ["week_start", "vote_sum"], :name => "index_repos_on_week_start_and_vote_sum"
+
   create_table "users", :force => true do |t|
     t.string   "twitter_uid"
     t.string   "name"
@@ -29,5 +32,16 @@ ActiveRecord::Schema.define(:version => 20120623231555) do
   end
 
   add_index "users", ["twitter_uid"], :name => "index_users_on_twitter_uid"
+
+  create_table "votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "repo_id"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "votes", ["repo_id", "value"], :name => "index_votes_on_repo_id_and_value"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

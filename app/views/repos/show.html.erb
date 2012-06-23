@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @repo.name %>
+</p>
+
+<p>
+  <b>Vote sum:</b>
+  <%= @repo.vote_sum %>
+</p>
+
+<p>
+  <b>Week start:</b>
+  <%= @repo.week_start %>
+</p>
+
+
+<%= link_to 'Edit', edit_repo_path(@repo) %> |
+<%= link_to 'Back', repos_path %>

@@ -7,5 +7,8 @@ class CreateRepos < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :repos, [:week_start, :vote_sum]
+    add_index :repos, :name
+
   end
 end
