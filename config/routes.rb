@@ -1,6 +1,4 @@
 GitPlugged::Application.routes.draw do
-  get "repos/votes"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
