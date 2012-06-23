@@ -18,4 +18,3 @@ config/database.yml
 .sass-cache/*
 .env
 .idea
-db/schema.rb
