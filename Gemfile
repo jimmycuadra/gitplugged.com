@@ -13,6 +13,7 @@ gem "bootstrap-sass"
 
 gem "octokit"
 gem "omniauth-twitter"
+gem 'klout'
 
 group :production do
   gem "pg"
@@ -30,4 +31,5 @@ end
 group :test do
   gem "rspec-rails"
   gem "capybara"
+  gem 'rspec-rails'
 end
