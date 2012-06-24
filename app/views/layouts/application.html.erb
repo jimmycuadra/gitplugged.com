@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GitPlugged</title>
+  <title>Community-driven promotion of GitHub repositories | Git Plugged</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if logged_in? %>
+    USERNAME - <%= link_to "Log out", logout_url %>
+  <% else %>
+    <%= link_to image_tag("sign-in-with-twitter-l.png"), "/auth/twitter" %>
+  <% end %>
 
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>

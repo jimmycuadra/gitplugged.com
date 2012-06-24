@@ -5,4 +5,6 @@ GitPlugged::Application.routes.draw do
 
   get "auth/twitter/callback", to: "sessions#create"
   get "logout", to: "sessions#destroy"
+
+  root to: "repos#index"
 end
