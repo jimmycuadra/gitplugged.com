@@ -16,7 +16,8 @@ body {
   font-weight: bold;
 }
 
-.repo button {
+.repo button,
+.repo .requires-login {
   float: right;
 }
 
@@ -45,4 +46,8 @@ body {
 
 .help-inline.error {
   color: $red;
+}
+
+#winners {
+  margin-bottom: 80px;
 }
