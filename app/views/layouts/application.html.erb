@@ -8,7 +8,7 @@
 </head>
 <body>
   <% if logged_in? %>
-    USERNAME - <%= link_to "Log out", logout_url %>
+    Hi, <%= current_user.name %> - <%= link_to "Log out", logout_url %>
   <% else %>
     <%= link_to image_tag("sign-in-with-twitter-l.png"), "/auth/twitter" %>
   <% end %>
