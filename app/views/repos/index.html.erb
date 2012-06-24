@@ -19,7 +19,7 @@
 
 <% content_for :javascript do %>
   <script>
-    GP.winners = <%= @winners.to_json %>;
-    GP.repos = <%= @repos.to_json %>;
+    GP.winners = <%= @winners.to_json.html_safe %>;
+    GP.repos = <%= @repos.to_json.html_safe %>;
   </script>
 <% end %>
