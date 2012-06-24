@@ -20,5 +20,6 @@
   <script>
     GP.winners = <%= @winners.to_json.html_safe %>;
     GP.repos = <%= @repos.to_json.html_safe %>;
+    GP.logged_in = <%= logged_in? %>;
   </script>
 <% end %>
