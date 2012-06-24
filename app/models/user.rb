@@ -3,10 +3,16 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   def self.create_with_omniauth(auth)
-    user = new
+    user             = new
     user.twitter_uid = auth["uid"]
-    user.name = auth["info"]["name"]
+    user.name        = auth["info"]["name"]
     user.save!
     user
+  end
+
+  attr_accessible :name, :twitter_uid
+
+  def klout_score
+
   end
 end
