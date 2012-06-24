@@ -3,3 +3,24 @@
 body {
   padding-top: 60px;
 }
+
+.repo {
+  background-color: $grayLighter;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.repo .name {
+  font-weight: bold;
+}
+
+.repo button {
+  float: right;
+}
+
+
+.help-inline {
+  font-weight: bold;
+  color: $blue;
+}
