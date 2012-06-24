@@ -2,30 +2,36 @@ source "https://rubygems.org"
 
 gem "rails", "3.2.6"
 
+# Server
 gem "thin"
-gem "jquery-rails"
 
 # Assets
-gem "sass-rails",   "~> 3.2.3"
-gem "uglifier", ">= 1.0.3"
+gem "sass-rails"
+gem "coffee-rails"
+gem "uglifier"
 
+# Front end
+gem "haml"
+gem "jquery-rails"
 gem "bootstrap-sass"
-gem "ejs"
+gem "rails-backbone"
+gem "haml_coffee_assets"
 
+# Third party services
 gem "octokit"
 gem "omniauth-twitter"
-gem 'klout'
+gem "klout"
 
 group :production do
   gem "pg"
 end
 
 group :development, :test do
-  gem 'debugger'
   gem "sqlite3"
   gem "pry-rails"
   gem "pry-nav"
   gem "pry-coolline"
+  gem "jasminerice"
 end
 
 group :development do
@@ -35,5 +41,6 @@ end
 group :test do
   gem "rspec-rails"
   gem "capybara"
-  gem 'rspec-rails'
+  gem "capybara-webkit"
+  gem "simplecov", require: false
 end
