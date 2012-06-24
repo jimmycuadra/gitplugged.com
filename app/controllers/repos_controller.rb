@@ -1,13 +1,13 @@
 class ReposController < ApplicationController
 
   def index
-    @past_winners = 3.times.map do |i|
+    @winners = 3.times.map do |i|
       weeks_ago  = i+1
       week_start = (Date.today - weeks_ago.weeks).beginning_of_week
       (Repo.where(:week_start => week_start).order("vote_sum DESC").limit(1)).first
-    end
+    end.compact
 
-    @current_repos = Repo.where(:week_start => Date.today.beginning_of_week).order("vote_sum DESC")
+    @repos = Repo.where(:week_start => Date.today.beginning_of_week).order("vote_sum DESC")
   end
 
   def create

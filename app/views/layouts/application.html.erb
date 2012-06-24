@@ -3,7 +3,6 @@
 <head>
   <title>Community-driven promotion of GitHub repositories | Git Plugged</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,5 +11,8 @@
   <div class="container">
     <%= yield %>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <%= javascript_include_tag "application" %>
+  <%= yield :javascript %>
 </body>
 </html>

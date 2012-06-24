@@ -1,4 +1,14 @@
 <div class="page-header">
+  <h2>Winners</h2>
+</div>
+
+<ol>
+  <li>rails/rails</li>
+  <li>jquery/jquery</li>
+  <li>change/change_production</li>
+</ol>
+
+<div class="page-header">
   <h2>Repositories in the running...</h2>
 </div>
 
@@ -6,3 +16,10 @@
   <label for="search">Begin typing a GitHub username/repository to vote</label>
   <input type="text" placeholder="e.g. rails/rails" />
 </form>
+
+<% content_for :javascript do %>
+  <script>
+    GP.winners = <%= @winners.to_json %>;
+    GP.repos = <%= @repos.to_json %>;
+  </script>
+<% end %>
