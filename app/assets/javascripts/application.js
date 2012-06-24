@@ -77,8 +77,16 @@ $(function () {
         $("#search-input").val("").trigger("search.reset");
       },
 
-      error: function () {
-        console.log("error", arguments);
+      error: function (jqXHR, textStatus, errorThrown) {
+        var data;
+
+        try {
+          data = JSON.parse(jqXHR.responseText);
+        } catch (err) {
+          data = { message: "An unknown error occurred." };
+        }
+
+        $("#search .help-inline").text(data.message).addClass("error");
       }
     });
   });
@@ -87,6 +95,8 @@ $(function () {
     var query = $(event.target).val(),
         $help = $("#search .help-inline"),
         matchedRepos;
+
+    $help.removeClass("error");
 
     if (query.length === 0) {
       $help.text("");
