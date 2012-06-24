@@ -24,6 +24,8 @@ group :development, :test do
   gem 'debugger'
   gem "sqlite3"
   gem "pry-rails"
+  gem "pry-nav"
+  gem "pry-coolline"
 end
 
 group :development do

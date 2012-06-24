@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  attr_accessible :repo_id, :user_id, :value
+  attr_accessible :repo_id, :repo, :user_id, :user, :value
   belongs_to :repo
   belongs_to :user
 
