@@ -1,0 +1,23 @@
+%h1 A weekly contest for awesome GitHub repositories.
+%br
+
+.page-header
+  %h2 Repositories in the running this week
+
+%form#search
+  %label{ for: "search-input" } Type a GitHub repository to nominate for this week's contest
+  %input#search-input{ type: "text", placeholder: "e.g. rails/rails" }
+  %span.help-inline
+
+#repos.section
+
+.page-header
+  %h2 Previous winners
+
+#winners.row
+
+- content_for :javascript do
+  :javascript
+    GP.winners = #{raw @winners.to_json};
+    GP.repos = #{raw @repos.to_json};
+    GP.logged_in = #{logged_in?};

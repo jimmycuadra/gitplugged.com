@@ -1,0 +1,18 @@
+!!! 5
+%html
+  %head
+    %title Community-driven promotion of GitHub repositories | Git Plugged
+    = stylesheet_link_tag "application", media: "all"
+    = csrf_meta_tags
+  %body
+    = render "application/navbar"
+
+    .container
+      - flash.keys.each do |key|
+        %div{ class: "alert #{key}" }= flash[key]
+
+      = yield
+
+    %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" }
+    = javascript_include_tag "application"
+    = yield :javascript
