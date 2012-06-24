@@ -1,5 +1,7 @@
 <div class="repo clearfix">
   <span class="name"><a href="https://github.com/<%= name %>"><%= name %></a></span>
   <span class="vote_sum"><%= parseInt(vote_sum) %> points</span>
-  <button>Endorse</button>
+  <% if (GP.logged_in) { %>
+    <button class="btn btn-primary">Endorse</button>
+  <% } %>
 </div>
