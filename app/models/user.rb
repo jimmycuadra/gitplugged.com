@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
   attr_accessible :name, :twitter_uid
 
   def klout_score
+    begin
+      klout_id = Klout::Identity.find_by_twitter_id(twitter_uid)['id']
+    rescue Klout::NotFound => e
+      return 1.0
+    end
+
+    return Klout::User.new(klout_id).score['score']
 
   end
+
 end

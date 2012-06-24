@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20120623234113) do
 
   create_table "repos", :force => true do |t|
     t.string   "name"
-    t.integer  "vote_sum"
+    t.float    "vote_sum"
     t.date     "week_start"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20120623234113) do
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "repo_id"
-    t.integer  "value"
+    t.float    "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
