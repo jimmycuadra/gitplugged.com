@@ -14,7 +14,7 @@ $(function () {
   });
 
   _.each(GP.winners, function (repo) {
-    var rendered = JST["templates/repo"](repo);
+    var rendered = JST["templates/winner"](repo);
 
     $winners.append(rendered);
   });
@@ -72,7 +72,9 @@ $(function () {
       success: function (data, textStatus, jqXHR) {
         var rendered = JST["templates/repo"](data);
 
-        $repos.prepend(rendered);
+        GP.repos.unshift(data);
+
+        $("#search-input").val("").trigger("search.reset");
       },
 
       error: function () {
@@ -81,9 +83,20 @@ $(function () {
     });
   });
 
-  $("#search-input").on("keyup", function (event) {
+  $("#search-input").on("keyup search.reset", function (event) {
     var query = $(event.target).val(),
+        $help = $("#search .help-inline"),
         matchedRepos;
+
+    if (query.length === 0) {
+      $help.text("");
+    } else {
+      if ($repos.children().length === 0) {
+        $help.text("Hit return to nominate the repository " + query + "!");
+      } else {
+        $help.text('Add your vote to a repository by clicking an "Endorse" button!');
+      }
+    }
 
     // Find repos which match the query
     matchedRepos = _.filter(GP.repos, function (repo) {
