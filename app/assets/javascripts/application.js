@@ -47,4 +47,37 @@ $(function () {
       }
     });
   });
+
+  $("#search").on("submit", function (event) {
+    event.preventDefault();
+
+    if ($repos.children().length !== 0 || $("#search-input").val().length === 0) {
+      return;
+    }
+
+    // Nominate a new repo
+    $.ajax({
+      type: "POST",
+
+      url: "/repos",
+
+      data: {
+        repo: {
+          name: $("#search-input").val()
+        }
+      },
+
+      dataType: "json",
+
+      success: function (data, textStatus, jqXHR) {
+        var rendered = JST["templates/repo"](data);
+
+        $repos.prepend(rendered);
+      },
+
+      error: function () {
+        console.log("error", arguments);
+      }
+    });
+  });
 });
