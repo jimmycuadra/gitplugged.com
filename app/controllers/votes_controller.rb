@@ -15,7 +15,7 @@ class VotesController < ApplicationController
     repo.save!
 
     if @vote.save
-      respond_with @vote, status: :created
+      respond_with repo, status: :created
     else
       respond_with @vote.errors, status: :unprocessable_entity
     end

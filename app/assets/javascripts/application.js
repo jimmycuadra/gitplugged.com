@@ -20,7 +20,8 @@ $(function () {
   });
 
   $repos.on("click", "button", function (event) {
-    var repoName = $(event.target).parent().find("span").first().text();
+    var $el = $(event.target).parent(),
+        repoName = $el.find("span").first().text();
 
     $.ajax({
       type: "POST",
@@ -35,8 +36,10 @@ $(function () {
 
       dataType: "json",
 
-      success: function () {
-        console.log("success", arguments);
+      success: function (data, textStatus, jqXHR) {
+        var rendered = JST["templates/repo"](data);
+
+        $el.replaceWith(rendered);
       },
 
       error: function () {
