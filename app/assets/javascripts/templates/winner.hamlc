@@ -1,0 +1,7 @@
+.winner.span4
+  .winner-inner
+    %span
+      %img{ src: "http://forum.permessa.com/images/ranks/gold-star.gif" }
+      %a{ href: "https://github.com/#{@name}" } @name
+    %br
+    %span= "Finished with #{parseInt(@vote_sum)} points"

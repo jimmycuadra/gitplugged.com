@@ -1,9 +1,0 @@
-<div class="repo clearfix">
-  <span class="name"><a href="https://github.com/<%= name %>"><%= name %></a></span>
-  <span class="vote_sum"><%= parseInt(vote_sum) %> points</span>
-  <% if (GP.logged_in) { %>
-    <button class="btn btn-primary">Endorse</button>
-  <% } else { %>
-    <a class="btn requires-login" href="/auth/twitter" class="btn">Log in to vote!</a>
-  <% } %>
-</div>
