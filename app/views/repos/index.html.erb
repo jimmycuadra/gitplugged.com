@@ -1,21 +1,19 @@
 <div class="page-header">
-  <h2>Winners</h2>
+  <h2>Previous winners</h2>
 </div>
 
-<ol>
-  <li>rails/rails</li>
-  <li>jquery/jquery</li>
-  <li>change/change_production</li>
-</ol>
+<div id="winners"></div>
 
 <div class="page-header">
-  <h2>Repositories in the running...</h2>
+  <h2>Repositories in the running this week</h2>
 </div>
 
 <form>
   <label for="search">Begin typing a GitHub username/repository to vote</label>
   <input type="text" placeholder="e.g. rails/rails" />
 </form>
+
+<div id="repos"></div>
 
 <% content_for :javascript do %>
   <script>
