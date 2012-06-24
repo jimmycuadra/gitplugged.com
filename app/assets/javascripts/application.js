@@ -80,4 +80,24 @@ $(function () {
       }
     });
   });
+
+  $("#search-input").on("keyup", function (event) {
+    var query = $(event.target).val(),
+        matchedRepos;
+
+    // Find repos which match the query
+    matchedRepos = _.filter(GP.repos, function (repo) {
+      return repo.name.slice(0, query.length) === query;
+    });
+
+    // Clear the rendered repos
+    $repos.empty();
+
+    // Re-render matched repos
+    _.each(matchedRepos, function (repo) {
+      var rendered = JST["templates/repo"](repo);
+
+      $repos.append(rendered);
+    });
+  });
 });
