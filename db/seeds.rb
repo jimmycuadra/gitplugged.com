@@ -1,3 +1,6 @@
-Repo.create(name: "rails/rails", vote_sum: 1.0, week_start: Date.today.beginning_of_week)
 Repo.create(name: "jquery/jquery", vote_sum: 15.0, week_start: 1.week.ago.beginning_of_week)
-Repo.create(name: "intridea/omniauth", vote_sum: 1.0, week_start: Date.today.beginning_of_week)
+Repo.create(name: "rails/rails", vote_sum: 20.0, week_start: 2.weeks.ago.beginning_of_week)
+Repo.create(name: "mperham/sidekiq", vote_sum: 17.4, week_start: 3.weeks.ago.beginning_of_week)
+Repo.create(name: "fog/fog", vote_sum: 1.0, week_start: Date.today.beginning_of_week)
+Repo.create(name: "intridea/omniauth", vote_sum: 2.0, week_start: Date.today.beginning_of_week)
+Repo.create(name: "basho/riak", vote_sum: 6.0, week_start: Date.today.beginning_of_week)
