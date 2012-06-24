@@ -1,27 +1,8 @@
-<h1>Listing repos</h1>
+<div class="page-header">
+  <h2>Repositories in the running...</h2>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Vote sum</th>
-    <th>Week start</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @repos.each do |repo| %>
-  <tr>
-    <td><%= repo.name %></td>
-    <td><%= repo.vote_sum %></td>
-    <td><%= repo.week_start %></td>
-    <td><%= link_to 'Show', repo %></td>
-    <td><%= link_to 'Edit', edit_repo_path(repo) %></td>
-    <td><%= link_to 'Destroy', repo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Repo', new_repo_path %>
+<form>
+  <label for="search">Begin typing a GitHub username/repository to vote</label>
+  <input type="text" placeholder="e.g. rails/rails" />
+</form>

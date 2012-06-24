@@ -7,12 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if logged_in? %>
-    Hi, <%= current_user.name %> - <%= link_to "Log out", logout_url %>
-  <% else %>
-    <%= link_to image_tag("sign-in-with-twitter-l.png"), "/auth/twitter" %>
-  <% end %>
+  <%= render "application/navbar" %>
 
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
