@@ -24,3 +24,20 @@ body {
   font-weight: bold;
   color: $blue;
 }
+
+.winner {
+  background-color: $grayLighter;
+  border-radius: 6px;
+}
+
+.winner-inner {
+  padding: 10px;
+}
+
+.winner-inner a {
+  vertical-align: middle;
+}
+
+.winner-inner img {
+  vertical-align: middle;
+}
