@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   validates :twitter_uid, presence: true
   validates :name, presence: true
+  has_many :votes
 
   def self.create_with_omniauth(auth)
     user             = new

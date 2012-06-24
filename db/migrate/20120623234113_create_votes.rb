@@ -9,6 +9,7 @@ class CreateVotes < ActiveRecord::Migration
     end
 
     add_index :votes, [:repo_id, :value]
+    add_index :votes, [:repo_id, :user_id]
     add_index :votes, :user_id
 
   end
