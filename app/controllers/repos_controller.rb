@@ -2,7 +2,7 @@ class ReposController < ApplicationController
 
   def index
     @winners = 3.times.map do |i|
-      offset = i + 1
+      offset     = i + 1
       week_start = offset.weeks.ago.beginning_of_week
       (Repo.where(:week_start => week_start).order("vote_sum DESC").limit(1)).first
     end.compact
@@ -11,12 +11,12 @@ class ReposController < ApplicationController
   end
 
   def create
-    return head :unprocessable_entity if Repo.find_by_name(params[:repo][:name]).present?
+    return render json: {message: "Duplicate repo"}, status: :conflict if Repo.find_by_name(params[:repo][:name]).present?
 
     begin
       Octokit.repo(params[:repo][:name])
     rescue Octokit::NotFound => e
-      return head :unprocessable_entity
+      return render json: {message: "GitHub repository doesn't exist"}, status: :conflict
     end
 
     klout_score_of_user = current_user.klout_score
