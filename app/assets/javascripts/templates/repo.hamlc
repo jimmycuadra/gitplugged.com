@@ -1,8 +1,7 @@
-.repo.clearfix
-  %span.name
-    %a{ href: "https://github.com/#{@name}"}= @name
-  %span.vote_sum= "#{parseInt(@vote_sum)} points"
-  - if GP.logged_in
-    %button.btn.btn-primary Endorse
-  - else
-    %a.btn.requires-login{ href: "/auth/twitter" } Log in to vote!
+%span.name
+  %a{ href: "https://github.com/#{@name}"}= @name
+%span.vote_sum= "#{parseInt(@vote_sum)} points"
+- if GP.loggedIn
+  %button.btn.btn-primary Endorse
+- else
+  %a.btn.requires-login{ href: "/auth/twitter" } Log in to vote!
