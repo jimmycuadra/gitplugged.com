@@ -21,11 +21,14 @@ class ReposController < ApplicationController
       return render json: { message: "No GitHub repository found with that name." }, status: :conflict
     end
 
+    klout_score = current_user.klout_score
+
     repo = Repo.create!(params[:repo].merge(
       week_start: Date.today.beginning_of_week,
+      vote_sum: klout_score,
     ))
 
-    Vote.create!(repo: repo, user: current_user, value: current_user.klout_score)
+    Vote.create!(repo: repo, user: current_user, value: klout_score)
 
     repo.reload
 
