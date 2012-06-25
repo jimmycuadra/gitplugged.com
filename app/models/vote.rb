@@ -4,7 +4,7 @@ class Vote < ActiveRecord::Base
   belongs_to :repo
   belongs_to :user
 
-  validates :repo, presence: true, uniqueness: { scope: :user_id }
-  validates :user, presence: true
+  validates :repo_id, presence: true, uniqueness: { scope: :user_id }
+  validates :user_id, presence: true
   validates :value, presence: true
 end
