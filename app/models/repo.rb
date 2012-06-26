@@ -36,7 +36,7 @@ class Repo < ActiveRecord::Base
     repo = create!(
       name: repo_attributes[:name],
       week_start: Date.today.beginning_of_week,
-      vote_sum: klout_score,
+      vote_sum: score,
     )
 
     Vote.create!(repo: repo, user: current_user, value: score)
