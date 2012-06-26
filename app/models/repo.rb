@@ -31,7 +31,7 @@ class Repo < ActiveRecord::Base
       raise NotFound
     end
 
-    score = user.klout_score
+    score = user.score
 
     repo = create!(
       name: repo_attributes[:name],

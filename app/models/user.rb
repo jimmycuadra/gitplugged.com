@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     user
   end
 
-  def klout_score
+  def score
     begin
       klout_id = Klout::Identity.find_by_twitter_id(twitter_uid)["id"]
       Klout::User.new(klout_id).score["score"]

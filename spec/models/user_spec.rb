@@ -52,19 +52,19 @@ describe User do
     end
   end
 
-  describe "#klout_score" do
+  describe "#score" do
     it "returns the Klout score if the user is connected to Klout via Twitter" do
       klout_user = mock("Klout::User", score: { "score" => 1.23 })
       Klout::Identity.stub(find_by_twitter_id: { "id" => "abcdefg" })
       Klout::User.stub(new: klout_user)
 
-      user.klout_score.should == 1.23
+      user.score.should == 1.23
     end
 
     it "returns 1.0 if the user is not connected to Klout via Twitter" do
       Klout::Identity.stub(:find_by_twitter_id) { raise Klout::NotFound }
 
-      user.klout_score.should == 1.0
+      user.score.should == 1.0
     end
   end
 end

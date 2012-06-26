@@ -13,7 +13,7 @@ class Vote < ActiveRecord::Base
   def self.for_repo_by_user(repo_name, user)
     repo = Repo.find_by_name!(repo_name)
 
-    repo.votes.build(user: user, value: user.klout_score)
+    repo.votes.build(user: user, value: user.score)
   end
 
   private
