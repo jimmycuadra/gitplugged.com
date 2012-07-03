@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :repo do
-    name "foo/bar"
+    sequence(:name) { |n| "foo/bar#{n}" }
     vote_sum 1.0
     week_start { Date.today.beginning_of_week }
   end
