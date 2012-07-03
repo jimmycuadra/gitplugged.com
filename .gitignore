@@ -19,3 +19,4 @@ config/database.yml
 .env
 .idea
 coverage/*
+node_modules/*
