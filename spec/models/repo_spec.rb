@@ -48,4 +48,23 @@ describe Repo do
       described_class.recent_winners.should be_empty
     end
   end
+
+  describe ".in_the_running" do
+    let!(:current) do
+      3.times.map { FactoryGirl.create(:repo, vote_sum: [1.0, 15.0, 30.0].sample) }
+    end
+
+    let!(:old) do
+      2.times.map { FactoryGirl.create(:repo, week_start: 1.week.ago.beginning_of_week) }
+    end
+
+    it "returns the repos nominated this week" do
+      described_class.in_the_running.sort.should == current.sort
+    end
+
+    it "sorts the repos with vote_sum descending" do
+      vote_sums = described_class.in_the_running.map(&:vote_sum)
+      vote_sums.should == vote_sums.sort.reverse
+    end
+  end
 end
