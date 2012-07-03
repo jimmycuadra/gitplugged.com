@@ -19,6 +19,6 @@ class Vote < ActiveRecord::Base
   private
 
   def add_value_to_repo
-    vote.repo.update_attribute!(:vote_sum, vote.repo.vote_sum + vote.value)
+    repo.update_attributes!(vote_sum: repo.vote_sum + value)
   end
 end

@@ -4,6 +4,7 @@ SimpleCov.start "rails"
 require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 require "capybara/rspec"
+require "factory_girl_rails"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 

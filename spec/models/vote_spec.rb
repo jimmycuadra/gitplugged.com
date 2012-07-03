@@ -1,18 +1,15 @@
 require "spec_helper"
 
 describe Vote do
-  let(:repo) { Repo.create(name: "rails/rails", vote_sum: 1.0, week_start: Date.today.beginning_of_week) }
+  let(:repo) { FactoryGirl.create(:repo) }
 
   let(:user) do
-    user = User.new
-    user.name = "Joe Blow"
-    user.twitter_uid = "abcdefg"
-    user.save
-    user.stub(:score)
+    user = FactoryGirl.create(:user)
+    user.stub(score: 30.0)
     user
   end
 
-  let(:vote) { Vote.new(repo: repo, user: user, value: 1.0) }
+  let(:vote) { FactoryGirl.build(:vote, repo: repo, user: user) }
 
   it "requires a repo_id" do
     vote.repo_id = nil
@@ -21,8 +18,8 @@ describe Vote do
   end
 
   it "allows a user only one vote per repo" do
-    second_vote = vote.clone
     vote.save
+    second_vote = FactoryGirl.build(:vote, repo: repo, user: user)
     second_vote.valid?
     second_vote.should have(1).error_on(:repo_id)
   end
@@ -51,13 +48,12 @@ describe Vote do
     end
 
     it "uses the user's score as the value" do
-      user.stub(score: 30.0)
       vote.value.should == user.score
     end
 
     it "raises an exception if the repo is not found" do
       expect do
-        described_class.for_repo_by_user("foo/bar", user)
+        described_class.for_repo_by_user("doesn't exist", user)
       end.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
