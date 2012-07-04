@@ -1,10 +1,14 @@
-chai      = require "chai"
-chaiJq    = require "chai-jquery"
-sinon     = require "sinon"
-sinonChai = require "sinon-chai"
-
-chai.use(chaiJq)
-chai.use(sinonChai)
-
+# Chai
+chai = require "chai"
 global.expect = chai.expect
-global.sinon = sinon
+
+# jQuery
+global.jQuery = require "jquery"
+global.$ = jQuery
+
+# Sinon
+global.sinon = require "sinon"
+
+# Chai extensions
+chai.use require "chai-jquery"
+chai.use require "sinon-chai"
