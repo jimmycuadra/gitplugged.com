@@ -3,6 +3,12 @@ require "spec_helper"
 describe Repo do
   let(:repo) { FactoryGirl.build(:repo) }
 
+  let :user do
+    user = FactoryGirl.create(:user)
+    user.stub(score: 30.0)
+    user
+  end
+
   it "requires a name" do
     repo.name = nil
     repo.valid?
@@ -65,6 +71,37 @@ describe Repo do
     it "sorts the repos with vote_sum descending" do
       vote_sums = described_class.in_the_running.map(&:vote_sum)
       vote_sums.should == vote_sums.sort.reverse
+    end
+  end
+
+  describe ".nominate" do
+    it "raises if the repo has already been nominated" do
+      Repo.stub_chain(:where, exists?: true)
+
+      expect { Repo.nominate({ name: "foo/bar" }, user) }.to raise_error(Repo::AlreadyNominated)
+    end
+
+    it "raises if the repo doesn't exist on GitHub" do
+      Octokit.stub(:repo) { raise Octokit::NotFound }
+
+      expect { Repo.nominate({ name: "foo/bar" }, user) }.to raise_error(Repo::NotFound)
+    end
+
+    context "when successful" do
+      before { Octokit.stub(repo: true) }
+
+      subject { Repo.nominate({ name: "foo/bar" }, user) }
+
+      it { should_not be_a_new_record }
+
+      its(:vote_sum) { should == user.score }
+
+      it "creates a new vote for the repo with the user's score" do
+        votes = subject.votes.select { |v| v.user == user }
+
+        votes.size.should == 1
+        votes.first.value.should == user.score
+      end
     end
   end
 end

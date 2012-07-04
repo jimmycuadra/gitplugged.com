@@ -20,23 +20,18 @@ class Repo < ActiveRecord::Base
     end
 
     def nominate(repo_attributes, user)
-      raise AlreadyNominated if Repo.find_by_name(repo_attributes[:name]).exist?
-
-      begin
-        Octokit.repo(params[:repo][:name])
-      rescue Octokit::NotFound
-        raise NotFound
-      end
+      ensure_not_already_nominated(repo_attributes[:name])
+      ensure_exists_on_github(repo_attributes[:name])
 
       score = user.score
 
       repo = create!(
         name: repo_attributes[:name],
         week_start: Date.today.beginning_of_week,
-        vote_sum: score,
+        vote_sum: 0.0,
       )
 
-      Vote.create!(repo: repo, user: current_user, value: score)
+      Vote.create!(repo: repo, user: user, value: score)
 
       repo
     end
@@ -45,6 +40,16 @@ class Repo < ActiveRecord::Base
 
     def winner_for_past_week(offset = 1)
       where(week_start: offset.weeks.ago.beginning_of_week).order("vote_sum DESC").limit(1)
+    end
+
+    def ensure_not_already_nominated(name)
+      raise AlreadyNominated if Repo.where(name: name).exists?
+    end
+
+    def ensure_exists_on_github(name)
+      Octokit.repo(name)
+    rescue Octokit::NotFound
+      raise NotFound
     end
   end
 end
