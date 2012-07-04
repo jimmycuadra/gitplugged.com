@@ -28,10 +28,6 @@ end
 
 group :development, :test do
   gem "sqlite3"
-  gem "pry-rails"
-  gem "pry-nav"
-  gem "pry-coolline"
-  gem "jasminerice"
 end
 
 group :development do
