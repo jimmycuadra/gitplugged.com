@@ -35,26 +35,4 @@ describe Vote do
     vote.valid?
     vote.should have(1).error_on(:value)
   end
-
-  describe ".for_repo_by_user" do
-    let(:vote) { described_class.for_repo_by_user(repo.name, user) }
-
-    it "builds a new vote for the given repo" do
-      vote.repo.name.should == repo.name
-    end
-
-    it "builds a new vote by the given user" do
-      vote.user.should == user
-    end
-
-    it "uses the user's score as the value" do
-      vote.value.should == user.score
-    end
-
-    it "raises an exception if the repo is not found" do
-      expect do
-        described_class.for_repo_by_user("doesn't exist", user)
-      end.to raise_error(ActiveRecord::RecordNotFound)
-    end
-  end
 end

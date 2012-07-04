@@ -2,12 +2,10 @@ class VotesController < ApplicationController
   respond_to :json
 
   def create
-    vote = Vote.for_repo_by_user(params[:vote].delete(:repo_name), current_user)
+    head :unauthorized and return unless current_user
 
-    if vote.save
-      respond_with vote.repo, status: :created
-    else
-      respond_with vote.errors, status: :unprocessable_entity
-    end
+    vote = Repo.find(params[:repo_id]).votes.create(user: current_user, value: current_user.score)
+
+    respond_with vote.repo, status: :created, location: nil
   end
 end
