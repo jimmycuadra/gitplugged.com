@@ -2,12 +2,7 @@ require "spec_helper"
 
 describe Repo do
   let(:repo) { FactoryGirl.build(:repo) }
-
-  let :user do
-    user = FactoryGirl.create(:user)
-    user.stub(score: 30.0)
-    user
-  end
+  let(:user) { FactoryGirl.create(:user) }
 
   it "requires a name" do
     repo.name = nil

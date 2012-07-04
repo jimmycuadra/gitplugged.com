@@ -8,12 +8,14 @@ FactoryGirl.define do
   factory :user do
     name "Joe Blow"
     twitter_uid "abcdefg"
+
+    after(:build) { |u| u.stub(score: 30.0) }
   end
 
   factory :vote do
     user
     repo
 
-    value 30.0
+    value { user.score }
   end
 end
