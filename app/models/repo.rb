@@ -10,37 +10,41 @@ class Repo < ActiveRecord::Base
   validates :vote_sum, presence: true
   validates :week_start, presence: true
 
-  def self.recent_winners
-    3.times.map do |i|
-      offset = i + 1
-      query = where(week_start: offset.weeks.ago.beginning_of_week).order("vote_sum DESC").limit(1)
-      query.first
-    end.compact
-  end
-
-  def self.in_the_running
-    where(week_start: Date.today.beginning_of_week).order("vote_sum DESC")
-  end
-
-  def self.nominate(repo_attributes, user)
-    raise AlreadyNominated if Repo.find_by_name(repo_attributes[:name]).exist?
-
-    begin
-      Octokit.repo(params[:repo][:name])
-    rescue Octokit::NotFound
-      raise NotFound
+  class << self
+    def recent_winners
+      3.times.map { |i| winner_for_past_week(i + 1).first }.compact
     end
 
-    score = user.score
+    def in_the_running
+      where(week_start: Date.today.beginning_of_week).order("vote_sum DESC")
+    end
 
-    repo = create!(
-      name: repo_attributes[:name],
-      week_start: Date.today.beginning_of_week,
-      vote_sum: score,
-    )
+    def nominate(repo_attributes, user)
+      raise AlreadyNominated if Repo.find_by_name(repo_attributes[:name]).exist?
 
-    Vote.create!(repo: repo, user: current_user, value: score)
+      begin
+        Octokit.repo(params[:repo][:name])
+      rescue Octokit::NotFound
+        raise NotFound
+      end
 
-    repo
+      score = user.score
+
+      repo = create!(
+        name: repo_attributes[:name],
+        week_start: Date.today.beginning_of_week,
+        vote_sum: score,
+      )
+
+      Vote.create!(repo: repo, user: current_user, value: score)
+
+      repo
+    end
+
+    private
+
+    def winner_for_past_week(offset = 1)
+      where(week_start: offset.weeks.ago.beginning_of_week).order("vote_sum DESC").limit(1)
+    end
   end
 end
