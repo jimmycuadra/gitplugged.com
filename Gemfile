@@ -28,6 +28,8 @@ end
 
 group :development, :test do
   gem "sqlite3"
+  gem "konacha"
+  gem "capybara-webkit"
 end
 
 group :development do
@@ -37,7 +39,6 @@ end
 group :test do
   gem "rspec-rails"
   gem "capybara"
-  gem "capybara-webkit"
   gem "factory_girl_rails"
   gem "simplecov", require: false
 end
