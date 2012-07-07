@@ -5,6 +5,9 @@ gem "rails", "3.2.6"
 # Server
 gem "thin"
 
+# Data
+gem "active_model_serializers"
+
 # Assets
 gem "sass-rails"
 gem "coffee-rails"
