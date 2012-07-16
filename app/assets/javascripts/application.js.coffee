@@ -4,7 +4,7 @@
 #= require_tree ./collections
 #= require_tree ./views
 
-GP.Application: class Application
+class GP.Application
   constructor: (serverData) ->
     @repos = new GP.Collections.Repos
     @reposView = new GP.Views.Repos(collection: @repos)
