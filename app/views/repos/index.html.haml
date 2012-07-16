@@ -1,8 +1,22 @@
-%h1 A weekly contest for awesome GitHub repositories.
-%br
+.page-header
+  %h1
+    Git Plugged
+    %small Community-driven promotion of GitHub repositories
+
+.row
+  .span6
+    %p
+      Git Plugged is a weekly contest for the coolest
+      %a{ href: "https://github.com/" } GitHub
+      repositories.
+  .span6
+    .well
+      %h2 Last week's winner
+
+    #winners.row
 
 .page-header
-  %h2 Repositories in the running this week
+  %h2 This week's contest
 
 %form#search
   %label{ for: "search-input" } Type a GitHub repository to nominate for this week's contest
@@ -10,11 +24,6 @@
   %span.help-inline
 
 #repos.section
-
-.page-header
-  %h2 Previous winners
-
-#winners.row
 
 - content_for :javascript do
   :javascript
