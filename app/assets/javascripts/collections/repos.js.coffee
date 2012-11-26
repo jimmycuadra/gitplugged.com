@@ -1,4 +1,4 @@
-class GP.Collections.Repos extends Backbone.Collection
+class gp.Repos extends Backbone.Collection
   url: "/repos"
 
-  model: GP.Models.Repo
+  model: gp.Repo

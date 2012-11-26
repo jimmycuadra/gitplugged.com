@@ -2,7 +2,7 @@
 %html
   %head
     %title Community-driven promotion of GitHub repositories | Git Plugged
-    = stylesheet_link_tag "application", media: "all"
+    = stylesheet_link_tag "application"
     = csrf_meta_tags
   %body
     .container
@@ -15,6 +15,5 @@
 
       = render "application/footer"
 
-    %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" }
-    = javascript_include_tag "application"
+    = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", "application"
     = yield :javascript

@@ -1,4 +1,4 @@
-class GP.Views.Form extends Backbone.View
+class gp.FormView extends Backbone.View
   events:
     "submit": "nominate"
     "keyup input": "filter"

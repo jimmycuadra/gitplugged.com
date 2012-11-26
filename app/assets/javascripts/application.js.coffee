@@ -4,14 +4,14 @@
 #= require_tree ./collections
 #= require_tree ./views
 
-class GP.Application
+class gp.Application
   constructor: (serverData) ->
-    @repos = new GP.Collections.Repos
-    @reposView = new GP.Views.Repos(collection: @repos)
+    @repos = new gp.Repos
+    @reposView = new gp.ReposView(collection: @repos)
     @repos.reset(serverData.repos)
 
-    @winners = new GP.Collections.Repos
-    @winnersView = new GP.Views.Winners(collection: @winners)
+    @winners = new gp.Repos
+    @winnersView = new gp.WinnersView(collection: @winners)
     @winners.reset(serverData.winners)
 
-    @formView = new GP.Views.Form
+    @formView = new gp.FormView

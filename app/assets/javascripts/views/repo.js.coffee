@@ -1,4 +1,4 @@
-class GP.Views.Repo extends Backbone.View
+class gp.RepoView extends Backbone.View
   tagName: "article"
 
   className: "repo clearfix"

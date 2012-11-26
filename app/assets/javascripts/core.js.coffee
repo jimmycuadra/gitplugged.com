@@ -3,7 +3,4 @@
 #= require backbone
 #= require hamlcoffee
 
-window.GP =
-  Models: {}
-  Collections: {}
-  Views: {}
+window.gp = {}

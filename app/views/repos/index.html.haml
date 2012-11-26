@@ -28,9 +28,9 @@
 - content_for :javascript do
   :javascript
     $(function () {
-      GP.loggedIn = #{logged_in?};
+      gp.loggedIn = #{logged_in?};
 
-      GP.app = new GP.Application({
+      gp.app = new gp.Application({
         winners: #{raw @winners.to_json},
         repos: #{raw @repos.to_json},
       });

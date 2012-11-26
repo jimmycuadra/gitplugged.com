@@ -1,4 +1,4 @@
-class GP.Views.Winner extends Backbone.View
+class gp.WinnerView extends Backbone.View
   tagName: "article"
 
   className: "winner span4"
