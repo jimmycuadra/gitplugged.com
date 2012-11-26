@@ -5,9 +5,9 @@
     = stylesheet_link_tag "application"
     = csrf_meta_tags
   %body
-    .container
-      = render "application/navbar"
+    = render "application/navbar"
 
+    .container
       - flash.keys.each do |key|
         %div{ class: "alert #{key}" }= flash[key]
 

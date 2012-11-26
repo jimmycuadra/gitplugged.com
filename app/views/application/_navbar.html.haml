@@ -1,6 +1,9 @@
-.row
-  .pull-right
-    %ul.nav
+.navbar.navbar-static-top
+  .navbar-inner
+    %a.brand{ href: "#" } Git Plugged
+    .navbar-text.pull-left
+      %small Community-driven promotion of GitHub repositories.
+    %ul.nav.pull-right
       - if logged_in?
         %li.navbar-text= "Hi, #{current_user.name}"
         %li= link_to "Log out", logout_url
