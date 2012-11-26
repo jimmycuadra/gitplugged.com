@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "3.2.6"
+gem "rails", "3.2.9"
 
 # Server
 gem "thin"
@@ -9,9 +9,9 @@ gem "thin"
 gem "active_model_serializers"
 
 # Assets
-gem "sass-rails"
-gem "coffee-rails"
-gem "uglifier"
+gem "sass-rails", "~> 3.2.3"
+gem "coffee-rails", "~> 3.2.1"
+gem "uglifier", ">= 1.0.3"
 
 # Front end
 gem "haml"
@@ -32,7 +32,7 @@ end
 group :development, :test do
   gem "sqlite3"
   gem "konacha"
-  gem "capybara-webkit"
+  gem "poltergeist"
 end
 
 group :development do
