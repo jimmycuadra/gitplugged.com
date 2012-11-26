@@ -8,8 +8,10 @@
     = render "application/navbar"
 
     .container
-      - flash.keys.each do |key|
-        %div{ class: "alert #{key}" }= flash[key]
+      - flash.each do |key, value|
+        .alert{ class: key }
+          %button.close{ type: "button", data: { dismiss: "alert"} } x
+          = value
 
       = yield
 

@@ -2,5 +2,6 @@
 #= require underscore
 #= require backbone
 #= require hamlcoffee
+#= require bootstrap-alert
 
 window.gp = {}
