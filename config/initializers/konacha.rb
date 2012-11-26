@@ -1,3 +1,3 @@
 Konacha.configure do |config|
-  config.driver = :webkit
+  config.driver = :poltergeist
 end if defined?(Konacha)

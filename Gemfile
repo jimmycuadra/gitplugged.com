@@ -32,7 +32,7 @@ end
 group :development, :test do
   gem "sqlite3"
   gem "konacha"
-  gem "poltergeist"
+  gem "poltergeist", require: "capybara/poltergeist"
 end
 
 group :development do
