@@ -43,7 +43,7 @@ class Repo < ActiveRecord::Base
     end
 
     def ensure_not_already_nominated(name)
-      raise AlreadyNominated if Repo.where(name: name).exists?
+      raise AlreadyNominated if where(name: name).exists?
     end
 
     def ensure_exists_on_github(name)
