@@ -1,4 +1,4 @@
 class gp.Repos extends Backbone.Collection
-  url: "/repos"
+  url: "/api/repos"
 
   model: gp.Repo

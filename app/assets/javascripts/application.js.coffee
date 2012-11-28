@@ -8,10 +8,14 @@ class gp.Application
   constructor: (serverData) ->
     @repos = new gp.Repos
     @reposView = new gp.ReposView(collection: @repos)
-    @repos.reset(serverData.repos)
 
-    @winners = new gp.Repos
+    @winners = new gp.Winners
     @winnersView = new gp.WinnersView(collection: @winners)
-    @winners.reset(serverData.winners)
 
-    @formView = new gp.FormView
+    @formView = new gp.FormView(collection: @repos)
+
+    @repos.fetch()
+    @winners.fetch()
+
+$ ->
+  gp.app = new gp.Application
