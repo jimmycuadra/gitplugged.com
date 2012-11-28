@@ -12,3 +12,7 @@ end
 ActiveSupport.on_load(:active_record) do
   self.include_root_in_json = false
 end
+
+# The above doesn't do work for arrays because it's overridden by
+# ActiveModel::Serializer :(
+ActiveModel::ArraySerializer.root = false
