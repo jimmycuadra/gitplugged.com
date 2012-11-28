@@ -37,6 +37,9 @@ end
 
 group :development do
   gem "foreman"
+  gem "pry-rails"
+  gem "pry-nav"
+  gem "pry-coolline"
 end
 
 group :test do
