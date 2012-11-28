@@ -19,14 +19,3 @@
   %span.help-inline
 
 %section#repos
-
-- content_for :javascript do
-  :javascript
-    $(function () {
-      gp.loggedIn = #{logged_in?};
-
-      gp.app = new gp.Application({
-        winners: #{raw @winners.to_json},
-        repos: #{raw @repos.to_json},
-      });
-    });

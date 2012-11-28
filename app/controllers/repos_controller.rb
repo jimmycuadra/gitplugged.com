@@ -2,10 +2,7 @@ class ReposController < ApplicationController
   respond_to :json
 
   def index
-    @winners = Repo.recent_winners
-    @repos = Repo.in_the_running
-
-    respond_to { |format| format.html }
+    respond_with Repo.in_the_running
   end
 
   def create

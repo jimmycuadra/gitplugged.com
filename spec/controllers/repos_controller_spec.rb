@@ -2,16 +2,9 @@ require "spec_helper"
 
 describe ReposController do
   describe "#index" do
-    it "assigns @winners" do
-      Repo.stub(recent_winners: "winners")
+    it "responds with the repos in the current week's contest" do
+      Repo.should_receive(:in_the_running)
       get :index
-      assigns(:winners).should == "winners"
-    end
-
-    it "assigns @repos" do
-      Repo.stub(in_the_running: "repos")
-      get :index
-      assigns(:repos).should == "repos"
     end
   end
 
